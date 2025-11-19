@@ -1,0 +1,27 @@
+identity:
+  name: list_views
+  author: rorychen
+  label:
+    en_US: List Views
+    zh_Hans: 列出视图
+description:
+  human:
+    en_US: Get a list of all views in the specified schema with their definitions.
+    zh_Hans: 获取指定架构中所有视图的列表及其定义。
+  llm: Retrieve metadata and definitions for all views in a database schema.
+parameters:
+  - name: schema_name
+    type: string
+    required: false
+    label:
+      en_US: Schema Name
+      zh_Hans: 架构名称
+    human_description:
+      en_US: Schema name to list views from (default: public)
+      zh_Hans: 要列出视图的架构名称（默认：public）
+    llm_description: Database schema name to list views from
+    form: llm
+    default: "public"
+extra:
+  python:
+    source: tools/list_views.py

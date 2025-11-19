@@ -1,0 +1,38 @@
+identity:
+  name: get_table_structure
+  author: rorychen
+  label:
+    en_US: Get Table Structure
+    zh_Hans: 获取表结构
+description:
+  human:
+    en_US: Get detailed information about a table's structure including columns, types, and constraints.
+    zh_Hans: 获取表的详细信息，包括列、类型和约束。
+  llm: Retrieve comprehensive table structure information including columns, data types, and metadata.
+parameters:
+  - name: table_name
+    type: string
+    required: true
+    label:
+      en_US: Table Name
+      zh_Hans: 表名
+    human_description:
+      en_US: Name of the table to get structure information for
+      zh_Hans: 要获取结构信息的表名
+    llm_description: Table name to retrieve structure information for
+    form: llm
+  - name: schema_name
+    type: string
+    required: false
+    label:
+      en_US: Schema Name
+      zh_Hans: 架构名称
+    human_description:
+      en_US: Schema name containing the table (default: public)
+      zh_Hans: 包含表的架构名称（默认：public）
+    llm_description: Schema name containing the table
+    form: llm
+    default: "public"
+extra:
+  python:
+    source: tools/get_table_structure.py

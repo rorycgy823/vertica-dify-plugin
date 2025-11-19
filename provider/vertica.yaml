@@ -1,0 +1,160 @@
+identity:
+  author: rorychen
+  name: vertica
+  label:
+    en_US: Vertica Database
+    zh_Hans: Vertica 数据库
+  description:
+    en_US: Vertica database operations with configurable readonly mode
+    zh_Hans: 支持可配置只读模式的 Vertica 数据库操作
+  icon: icon.svg
+  tags:
+    - database
+    - sql
+    - analytics
+    - vertica
+credentials_for_provider:
+  vertica_host:
+    type: text-input
+    required: true
+    label:
+      en_US: Vertica Host
+      zh_Hans: Vertica 主机
+    placeholder:
+      en_US: your-vertica-host.com
+      zh_Hans: your-vertica-host.com
+    help:
+      en_US: The hostname or IP address of your Vertica database server
+      zh_Hans: Vertica 数据库服务器的主机名或 IP 地址
+  vertica_port:
+    type: number
+    required: false
+    label:
+      en_US: Port
+      zh_Hans: 端口
+    placeholder:
+      en_US: 5433
+      zh_Hans: 5433
+    help:
+      en_US: Vertica database port (default: 5433)
+      zh_Hans: Vertica 数据库端口（默认：5433）
+  vertica_database:
+    type: text-input
+    required: true
+    label:
+      en_US: Database Name
+      zh_Hans: 数据库名称
+    placeholder:
+      en_US: your_database
+      zh_Hans: your_database
+    help:
+      en_US: The name of the Vertica database to connect to
+      zh_Hans: 要连接的 Vertica 数据库名称
+  vertica_user:
+    type: text-input
+    required: true
+    label:
+      en_US: Username
+      zh_Hans: 用户名
+    placeholder:
+      en_US: your_username
+      zh_Hans: your_username
+    help:
+      en_US: Vertica database username
+      zh_Hans: Vertica 数据库用户名
+  vertica_password:
+    type: secret-input
+    required: false
+    label:
+      en_US: Password
+      zh_Hans: 密码
+    placeholder:
+      en_US: your_password
+      zh_Hans: your_password
+    help:
+      en_US: Vertica database password (optional)
+      zh_Hans: Vertica 数据库密码（可选）
+  vertica_readonly_mode:
+    type: select
+    required: false
+    label:
+      en_US: Readonly Mode
+      zh_Hans: 只读模式
+    options:
+      - value: "true"
+        label:
+          en_US: Enabled (Safe)
+          zh_Hans: 启用（安全）
+      - value: "false"
+        label:
+          en_US: Disabled (Allow writes)
+          zh_Hans: 禁用（允许写入）
+    default: "true"
+    help:
+      en_US: Enable readonly mode to only allow SELECT queries (recommended for safety)
+      zh_Hans: 启用只读模式仅允许 SELECT 查询（建议出于安全考虑）
+  vertica_connection_limit:
+    type: number
+    required: false
+    label:
+      en_US: Connection Limit
+      zh_Hans: 连接限制
+    placeholder:
+      en_US: 10
+      zh_Hans: 10
+    help:
+      en_US: Maximum number of database connections (1-100, default: 10)
+      zh_Hans: 数据库连接的最大数量（1-100，默认：10）
+  vertica_query_timeout:
+    type: number
+    required: false
+    label:
+      en_US: Query Timeout (ms)
+      zh_Hans: 查询超时（毫秒）
+    placeholder:
+      en_US: 60000
+      zh_Hans: 60000
+    help:
+      en_US: Query execution timeout in milliseconds (default: 60000)
+      zh_Hans: 查询执行超时时间（毫秒，默认：60000）
+  vertica_ssl:
+    type: select
+    required: false
+    label:
+      en_US: SSL Enabled
+      zh_Hans: SSL 启用
+    options:
+      - value: "true"
+        label:
+          en_US: Yes
+          zh_Hans: 是
+      - value: "false"
+        label:
+          en_US: No
+          zh_Hans: 否
+    default: "false"
+    help:
+      en_US: Enable SSL/TLS encryption for database connections
+      zh_Hans: 为数据库连接启用 SSL/TLS 加密
+  vertica_default_schema:
+    type: text-input
+    required: false
+    label:
+      en_US: Default Schema
+      zh_Hans: 默认架构
+    placeholder:
+      en_US: public
+      zh_Hans: public
+    help:
+      en_US: Default schema to use for queries (default: public)
+      zh_Hans: 查询使用的默认架构（默认：public）
+tools:
+  - tools/execute_query.yaml
+  - tools/stream_query.yaml
+  - tools/list_tables.yaml
+  - tools/list_views.yaml
+  - tools/list_indexes.yaml
+  - tools/get_table_structure.yaml
+extra:
+  python:
+    source: provider/vertica.py

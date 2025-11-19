@@ -1,0 +1,27 @@
+identity:
+  name: list_tables
+  author: rorychen
+  label:
+    en_US: List Tables
+    zh_Hans: 列出表
+description:
+  human:
+    en_US: Get a list of all tables in the specified schema with metadata.
+    zh_Hans: 获取指定架构中所有表的列表及其元数据。
+  llm: Retrieve metadata for all tables in a database schema.
+parameters:
+  - name: schema_name
+    type: string
+    required: false
+    label:
+      en_US: Schema Name
+      zh_Hans: 架构名称
+    human_description:
+      en_US: Schema name to list tables from (default: public)
+      zh_Hans: 要列出表的架构名称（默认：public）
+    llm_description: Database schema name to list tables from
+    form: llm
+    default: "public"
+extra:
+  python:
+    source: tools/list_tables.py

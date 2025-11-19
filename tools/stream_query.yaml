@@ -1,0 +1,52 @@
+identity:
+  name: stream_query
+  author: rorychen
+  label:
+    en_US: Stream Query Results
+    zh_Hans: 流式查询结果
+description:
+  human:
+    en_US: Execute large SQL queries and stream results in configurable batches for efficient processing.
+    zh_Hans: 执行大型 SQL 查询并以可配置的批次流式传输结果以提高处理效率。
+  llm: Stream large query results in batches to handle datasets that don't fit in memory.
+parameters:
+  - name: sql
+    type: string
+    required: true
+    label:
+      en_US: SQL Query
+      zh_Hans: SQL 查询
+    human_description:
+      en_US: The SQL query to execute (should not contain LIMIT or OFFSET)
+      zh_Hans: 要执行的 SQL 查询（不应包含 LIMIT 或 OFFSET）
+    llm_description: SQL query to execute with streaming results
+    form: llm
+  - name: batch_size
+    type: number
+    required: false
+    label:
+      en_US: Batch Size
+      zh_Hans: 批次大小
+    human_description:
+      en_US: Number of rows per batch (1-10000, default: 1000)
+      zh_Hans: 每个批次的行数（1-10000，默认：1000）
+    llm_description: Number of rows to return per batch
+    form: llm
+    default: 1000
+    min: 1
+    max: 10000
+  - name: max_rows
+    type: number
+    required: false
+    label:
+      en_US: Maximum Rows
+      zh_Hans: 最大行数
+    human_description:
+      en_US: Maximum total rows to return (optional, default: unlimited)
+      zh_Hans: 返回的最大总行数（可选，默认：无限制）
+    llm_description: Maximum number of rows to return across all batches
+    form: llm
+    min: 1
+extra:
+  python:
+    source: tools/stream_query.py

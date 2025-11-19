@@ -1,0 +1,37 @@
+identity:
+  name: execute_query
+  author: rorychen
+  label:
+    en_US: Execute SQL Query
+    zh_Hans: 执行 SQL 查询
+description:
+  human:
+    en_US: Execute SQL queries against the Vertica database. Supports SELECT, SHOW, DESCRIBE, EXPLAIN, and WITH queries in readonly mode.
+    zh_Hans: 对 Vertica 数据库执行 SQL 查询。只读模式下支持 SELECT、SHOW、DESCRIBE、EXPLAIN 和 WITH 查询。
+  llm: Execute SQL queries against the Vertica database with configurable readonly mode for safety.
+parameters:
+  - name: sql
+    type: string
+    required: true
+    label:
+      en_US: SQL Query
+      zh_Hans: SQL 查询
+    human_description:
+      en_US: The SQL query to execute
+      zh_Hans: 要执行的 SQL 查询
+    llm_description: SQL query to execute against the Vertica database
+    form: llm
+  - name: params
+    type: array
+    required: false
+    label:
+      en_US: Query Parameters
+      zh_Hans: 查询参数
+    human_description:
+      en_US: Optional parameters for parameterized queries
+      zh_Hans: 参数化查询的可选参数
+    llm_description: Optional array of parameters for parameterized SQL queries
+    form: llm
+extra:
+  python:
+    source: tools/execute_query.py

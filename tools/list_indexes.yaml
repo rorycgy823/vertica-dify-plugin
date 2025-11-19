@@ -1,0 +1,38 @@
+identity:
+  name: list_indexes
+  author: rorychen
+  label:
+    en_US: List Indexes
+    zh_Hans: 列出索引
+description:
+  human:
+    en_US: Get information about projections (Vertica's equivalent of indexes) for a specific table.
+    zh_Hans: 获取特定表的投影信息（Vertica 中索引的等价物）。
+  llm: Retrieve projection information for a table in Vertica database.
+parameters:
+  - name: table_name
+    type: string
+    required: true
+    label:
+      en_US: Table Name
+      zh_Hans: 表名
+    human_description:
+      en_US: Name of the table to get projection information for
+      zh_Hans: 要获取投影信息的表名
+    llm_description: Table name to retrieve projection/index information for
+    form: llm
+  - name: schema_name
+    type: string
+    required: false
+    label:
+      en_US: Schema Name
+      zh_Hans: 架构名称
+    human_description:
+      en_US: Schema name containing the table (default: public)
+      zh_Hans: 包含表的架构名称（默认：public）
+    llm_description: Schema name containing the table
+    form: llm
+    default: "public"
+extra:
+  python:
+    source: tools/list_indexes.py
