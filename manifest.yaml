@@ -1,0 +1,37 @@
+version: 0.0.1
+type: plugin
+author: rorychen
+name: vertica
+label:
+  en_US: Vertica Database
+  zh_Hans: Vertica 数据库
+description:
+  en_US: MCP server for Vertica database operations with configurable readonly mode
+  zh_Hans: 用于 Vertica 数据库操作的 MCP 服务器，支持可配置的只读模式
+icon: _assets/icon.svg
+resource:
+  memory: 268435456
+  permission:
+    tool:
+      enabled: true
+    model:
+      enabled: false
+    endpoint:
+      enabled: false
+    app:
+      enabled: false
+    storage:
+      enabled: true
+      size: 1048576
+plugins:
+  tools:
+    - "provider/vertica.yaml"
+meta:
+  version: 0.0.1
+  arch:
+    - amd64
+    - arm64
+  runner:
+    language: python
+    version: "3.12"
+    entrypoint: main
